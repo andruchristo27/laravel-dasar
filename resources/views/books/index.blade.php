@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="books/create" class="btn btn-md btn-success mb-3">ADD BOOK</a>
+                        <a href="{{ route('books.create') }}" class="btn btn-md btn-success mb-3">ADD BOOK</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -40,7 +40,7 @@
                                         <td>{{ $book->author }}</td>
                                         <td>{{ $book->is_published ? 'Published' : 'Not Published' }}</td>
                                         <td class="text-center">
-                                            <a href="" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('books.show', $book->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
                                             <a href="" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
 
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="" method="POST">
