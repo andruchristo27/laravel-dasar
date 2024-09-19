@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -72,5 +73,17 @@ class BookController extends Controller
         $book->update($validatedData);
 
         return to_route('books.index')->with('success', 'Book updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+
+        // delete image
+        Storage::delete('public/' . $book->cover_image);
+
+        $book->delete();
+
+        return back()->with('success', 'Book deleted successfully');
     }
 }
